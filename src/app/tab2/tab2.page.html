@@ -1,0 +1,55 @@
+<ion-header no-border>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Usuarios
+    </ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar *ngIf="validador===false" color="primary">
+    <ion-searchbar  placeholder="Buscar usuario..." (ionChange)="buscarUsuario($event)"></ion-searchbar>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+    <ion-button *ngIf="validador===false" shape="round" (click)="get()"  class="boton">mis amigos</ion-button>
+    <ion-button *ngIf="validador===true" shape="round" (click)="getUsers()"  class="boton">usuarios</ion-button>
+
+    <ion-list *ngIf="usuarios.length === 0">
+
+        <ion-item *ngFor="let i of [1,1,1,1,1,1,1,1,1,1]">
+
+          <ion-label>
+            <ion-skeleton-text width="40%"></ion-skeleton-text>
+            <ion-skeleton-text width="80%"></ion-skeleton-text>
+          </ion-label>
+
+        </ion-item>
+
+      </ion-list>
+
+
+<ion-list *ngIf="validador===false">
+
+<ion-item *ngFor="let u of usuarios | filto:textoBuscar">
+  <ion-label >
+    <h4>{{u.nombre}}</h4>
+    <h3>{{u.correo}}</h3>
+  </ion-label>
+  <ion-button shape="round" (click)="agregar(u.correo,u.nombre)"  class="boton">enviar solicitud</ion-button>
+</ion-item>
+
+</ion-list>
+
+<ion-list *ngIf="validador===true">
+
+    <ion-item *ngFor="let a of amigos">
+      <ion-label >
+        <h4>{{a.amigo}}</h4>
+        <h3>{{a.correoAmigo}}</h3>
+      </ion-label>
+      <ion-button shape="round" (click)="send(a.correoAmigo)"  class="boton">enviar mensaje</ion-button>
+    </ion-item>
+    
+    </ion-list>
+</ion-content>

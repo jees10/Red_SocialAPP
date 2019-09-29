@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons >
+          <ion-button  (click)="atras()" class="boton">
+            <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+    <ion-title>Chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+
+        <ion-item *ngFor="let m of mensajes">
+          <ion-label >
+            <h6>{{m.remitente}}</h6>
+            <h2>{{m.mensaje}}</h2>
+          </ion-label>
+        </ion-item>
+        
+        </ion-list>
+
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <form [formGroup]="chatform">
+      <ion-textarea formControlName="mensaje" class="message-input" placeholder="Escribe un mensaje aquí" rows="1" autocapitalize="off"></ion-textarea>
+    </form>
+      <ion-buttons slot="end">
+        <ion-button color="primary" (click)="send()">
+          <ion-icon slot="icon-only" name="md-send"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    
+    </ion-toolbar>
+  </ion-footer>

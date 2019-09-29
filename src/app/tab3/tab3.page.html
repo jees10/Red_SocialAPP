@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Mensajes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list *ngIf="mensajes.length === 0 && mensajes2.length === 0">
+
+        <ion-item *ngFor="let i of [1,1,1,1,1,1,1,1,1,1]">
+
+          <ion-label>
+            <ion-skeleton-text width="40%"></ion-skeleton-text>
+            <ion-skeleton-text width="80%"></ion-skeleton-text>
+          </ion-label>
+
+        </ion-item>
+
+      </ion-list>
+
+    <ion-list>
+
+        <ion-item *ngFor="let m of mensajes">
+          <ion-label >
+            <h4>{{m.recibidor}}</h4>
+          </ion-label>
+          <ion-button shape="round" (click)="chat(m.canal,m.recibidor)"  class="boton">abrir chat</ion-button>
+        </ion-item>
+        
+        </ion-list>
+
+        <ion-list>
+
+          <ion-item *ngFor="let m of mensajes2">
+            <ion-label >
+              <h4>{{m.remitente}}</h4>
+            </ion-label>
+            <ion-button shape="round" (click)="chat(m.canal,m.remitente)"  class="boton">abrir chat</ion-button>
+          </ion-item>
+          
+          </ion-list>
+        
+
+</ion-content>

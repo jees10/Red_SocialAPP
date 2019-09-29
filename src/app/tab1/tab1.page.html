@@ -1,0 +1,41 @@
+<ion-header no-border>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+        <ion-item *ngFor="let e of estados">
+          <ion-card>
+            <ion-card-header color="primary" no-border>
+              <ion-card-title>{{username.nombre}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+            <ion-card>
+              
+                <img src="{{e.imagen}}">
+              
+            </ion-card>
+            <h2>{{e.texto}}</h2>
+          </ion-card-content>
+          <ion-button shape="round" (click)="like(e.id,e.correo,e.imagen,e.texto,e.like)">{{e.like}}
+          <ion-icon name="heart" class="heart"></ion-icon>
+        </ion-button>
+          </ion-card>
+        </ion-item>
+      </ion-list>
+      <ion-card>
+        <ion-card-content>
+      <ion-button shape="round" (click)="createPost()" class="boton" color="success">crear post</ion-button>
+      <ion-button shape="round" (click)="misEstados()" class="boton">Mis Estados</ion-button>
+    </ion-card-content>
+    </ion-card>
+    <ion-button shape="round" (click)="logout()" color="danger">logout</ion-button>
+</ion-content>
+
+
+

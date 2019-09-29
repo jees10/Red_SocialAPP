@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Mis Estados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+      <ion-item *ngFor="let e of estados">
+        <ion-card>
+          <ion-card-header color="primary" >
+            <ion-card-title>{{e.correo}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+          <ion-card>
+            
+              <img src="{{e.imagen}}">
+            
+          </ion-card>
+          <h2>{{e.texto}}</h2>
+        </ion-card-content>
+        <ion-button shape="round">{{e.like}}
+        <ion-icon name="heart" class="heart"></ion-icon>
+      </ion-button>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  <ion-button shape="round" (click)="atras()">atras</ion-button>
+</ion-content>

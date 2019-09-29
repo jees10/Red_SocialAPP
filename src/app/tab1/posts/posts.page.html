@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Crear Post</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-grid style="height: 100%">
+    
+        <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
+
+          <ion-card>
+            <ion-card-header color = "primary">
+                <ion-card-title>Crear Post</ion-card-title>
+            </ion-card-header>
+              <ion-card-content>
+
+                    <ion-button shape="round" (click)="imagen()">elegir imagen</ion-button>
+                    <ion-button shape="round" (click)="tomarfoto()">tomar foto</ion-button>
+
+
+                    <ion-card>
+                      <img src="{{myphoto}}">
+                    </ion-card>
+                    
+                    
+
+                    <form [formGroup]="postform">
+    
+                      <ion-item>
+                            <ion-label position="floating">Texto</ion-label>
+                            <ion-input type="text" formControlName="texto"></ion-input>
+                      </ion-item>                         
+        
+                     <div class="error-messages">
+                       <ng-container *ngFor="let error of error_messages.texto">
+                         <div class="error-messages" *ngIf="postform.get('texto').hasError(error.type) && (postform.get('texto').dirty || postform.get('texto').touched)">
+                           {{ error.message }}
+                         </div>
+                       </ng-container>
+                      </div>        
+        
+                      <ion-button shape="round" expand="block" (click)="save()" [disabled]="!postform.valid" color="success">crear post</ion-button>        
+                    </form>  
+                  </ion-card-content>
+                  </ion-card>                        
+        </ion-row>
+        
+      </ion-grid>
+
+      <ion-button shape="round" (click)="atras()" >atras</ion-button>
+
+</ion-content>

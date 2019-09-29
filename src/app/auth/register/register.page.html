@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-grid style="height: 100%">
+    
+    <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
+    
+        <ion-card flex>
+    
+            <ion-card-header  color="primary">
+              <ion-card-title>Registrarse</ion-card-title>
+            </ion-card-header>
+          
+            <ion-card-content shape="round">
+    
+                <form [formGroup]="registerform">
+
+                  <ion-item>
+                        <ion-label position="floating">Nombre Completo</ion-label>
+                        <ion-input type="text" formControlName="nombre"></ion-input>
+                  </ion-item>
+
+                  <div class="error-messages">
+                      <ng-container *ngFor="let error of error_messages.nombre">
+                        <div class="error-messages" *ngIf="registerform.get('nombre').hasError(error.type) && (registerform.get('nombre').dirty || registerform.get('nombre').touched)">
+                          {{ error.message }}
+                        </div>
+                      </ng-container>
+                     </div>
+          
+                 <ion-item>
+                   <ion-label position="floating">Correo</ion-label>
+                   <ion-input type="text" formControlName="correo"></ion-input>
+                 </ion-item>
+    
+                 <div class="error-messages">
+                   <ng-container *ngFor="let error of error_messages.correo">
+                     <div class="error-messages" *ngIf="registerform.get('correo').hasError(error.type) && (registerform.get('correo').dirty || registerform.get('correo').touched)">
+                       {{ error.message }}
+                     </div>
+                   </ng-container>
+                  </div>
+    
+                 <ion-item>
+                   <ion-label  position="floating">Contraseña</ion-label>
+                   <ion-input  #passwordEyeRegister  [type]="passwordTypeInput"  formControlName="clave"></ion-input>
+                   <button  item-end  class="btn_eye_icon"  (click)="togglePasswordMode()">
+                     <ion-icon  [name]="iconpassword"></ion-icon>
+                   </button>
+                 </ion-item>
+               
+    
+                  <div class="error-messages">
+                  <ng-container *ngFor="let error of error_messages.clave">
+                    <div class="error-messages" *ngIf="registerform.get('clave').hasError(error.type) && (registerform.get('clave').dirty || registerform.get('clave').touched)">
+                      {{ error.message }}
+                    </div>
+                  </ng-container>
+                  </div>
+    
+                  <ion-button shape="round" expand="block" (click)="save()" [disabled]="!registerform.valid">Registrarse</ion-button>
+                  <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
+                  </ion-row>
+    
+                </form>
+    
+              </ion-card-content>
+          
+          </ion-card>
+    
+    </ion-row>
+    
+  </ion-grid>
+    
+</ion-content>
+    
